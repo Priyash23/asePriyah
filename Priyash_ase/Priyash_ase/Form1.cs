@@ -45,13 +45,61 @@ namespace Priyash_ase
 
 
 
-       
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Images|*.png;*.bmp;*.jpg";
+            ImageFormat format = ImageFormat.Png;
+            if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string ext = System.IO.Path.GetExtension(sfd.FileName);
+                switch (ext)
+                {
+                    case ".jpg":
+                        format = ImageFormat.Jpeg;
+                        break;
+                    case ".bmp":
+                        format = ImageFormat.Bmp;
+                        break;
+                }
+                picture.Save(sfd.FileName, format);
+                MessageBox.Show("Image has been Saved!");
+
+            }
+        }
 
         private void colorRangeBox_ValueChanged(object sender, EventArgs e)
         {
 
         }
 
+        private void restartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //picture = null;
+            //g1 = null;
+        }
+
+        private void animateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            colorChange = true;
+            mandelbrot();
+            Refresh();
+            /*
+            var bitmap = new Bitmap(640, 480, PixelFormat.Format8bppIndexed);
+
+            ColorPalette palette = picture.Palette;
+            Color first = palette.Entries[0];
+            for (int i = 0; i < (palette.Entries.Length - 1); i++)
+            {
+                palette.Entries[i] = palette.Entries[i + 1];
+            }
+            palette.Entries[(palette.Entries.Length - 1)] = first;
+
+            picture.Palette = palette;
+
+            mandelbrot();
+            */
+        }
         
 
         private void Form1_Load_1(object sender, EventArgs e)
@@ -59,6 +107,8 @@ namespace Priyash_ase
             init();
             start();
         }
+
+        
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
