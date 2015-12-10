@@ -75,8 +75,10 @@ namespace Priyash_ase
 
         private void restartToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //picture = null;
-            //g1 = null;
+            picture = null;
+            g1 = null;
+            initvalues();
+            mandelbrot();
         }
 
         private void animateToolStripMenuItem_Click(object sender, EventArgs e)
