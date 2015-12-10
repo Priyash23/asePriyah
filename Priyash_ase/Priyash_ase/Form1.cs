@@ -86,7 +86,7 @@ namespace Priyash_ase
             colorChange = true;
             mandelbrot();
             Refresh();
-            /*
+            
             var bitmap = new Bitmap(640, 480, PixelFormat.Format8bppIndexed);
 
             ColorPalette palette = picture.Palette;
@@ -100,7 +100,7 @@ namespace Priyash_ase
             picture.Palette = palette;
 
             mandelbrot();
-            */
+            
         }
         /*
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
